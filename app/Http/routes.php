@@ -28,4 +28,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::match(['get','post'],'/web',function(){
+        return Response::json(['test']);
+    });
 });
