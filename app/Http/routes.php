@@ -11,9 +11,16 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controllers(array(
+    '/test' =>      ''
+));
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +33,9 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','test']], function () {
     //
-    Route::match(['get','post'],'/web',function(){
+    Route::match(['get','post'],'/web/{number}',function($number){
         return Response::json(['test']);
     });
 });

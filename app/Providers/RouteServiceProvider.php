@@ -26,6 +26,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
 
+        $router->pattern('number', '[0-9]+');
+
         parent::boot($router);
     }
 
