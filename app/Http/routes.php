@@ -13,13 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::controllers(array(
-    '/test' =>      ''
-));
+Route::controllers([
+    'test'  =>  'Test\TestController',
+    'login' =>  'Login\LoginController',
+]);
 
 
 /*
@@ -38,4 +36,10 @@ Route::group(['middleware' => ['web','test']], function () {
     Route::match(['get','post'],'/web/{number}',function($number){
         return Response::json(['test']);
     });
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
